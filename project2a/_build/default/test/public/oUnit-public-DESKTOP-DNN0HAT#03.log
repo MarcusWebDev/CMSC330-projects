@@ -1,0 +1,9 @@
+2021-02-19T21:58:52+00:00 DESKTOP-DNN0HAT#03 I: Start test public:2:area.
+2021-02-19T21:58:52+00:00 DESKTOP-DNN0HAT#03 I: Test public:2:area is successful.
+2021-02-19T21:58:52+00:00 DESKTOP-DNN0HAT#03 I: End test public:2:area.
+2021-02-19T21:58:52+00:00 DESKTOP-DNN0HAT#03 I: Start test public:7:is_prime.
+2021-02-19T21:58:52+00:00 DESKTOP-DNN0HAT#03 I: Test public:7:is_prime is successful.
+2021-02-19T21:58:52+00:00 DESKTOP-DNN0HAT#03 I: End test public:7:is_prime.
+2021-02-19T21:58:52+00:00 DESKTOP-DNN0HAT#03 I: Start test public:10:larger.
+2021-02-19T21:58:52+00:00 DESKTOP-DNN0HAT#03 I: Test public:10:larger is successful.
+2021-02-19T21:58:52+00:00 DESKTOP-DNN0HAT#03 I: End test public:10:larger.

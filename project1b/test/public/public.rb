@@ -103,6 +103,7 @@ class PublicTests < MiniTest::Test
         ret = p1_brd.attack_pos(pos3) && ret
 
         p1_brd.attack_pos(pos0)
+
         assert(ret, "A boat is expected to be attacked but is not")
         assert_equal(3, p1_brd.num_successful_attacks, "The number of hits needs to be correct")
     end
@@ -122,13 +123,13 @@ class PublicTests < MiniTest::Test
         p2_moves = read_attacks_file(ATTACK_P1)
 
         board_p2.attack_pos(p1_moves[0])
-
+        
         for i in 1..([p1_moves.length, p2_moves.length].min - 1)
             refute(board_p1.all_sunk? || board_p2.all_sunk?, "The game is over too early")
             board_p2.attack_pos(p1_moves[i])
             board_p1.attack_pos(p2_moves[i])
         end
-
+        
         assert(board_p2.all_sunk?, "P1 should have sunk all P2 Boats")
         refute(board_p1.all_sunk?, "P2 should not have sunk all P1 Boats")
     end

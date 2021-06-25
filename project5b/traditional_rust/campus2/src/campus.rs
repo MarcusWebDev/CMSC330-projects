@@ -1,5 +1,8 @@
 use crate::turtle::Turtle;
 use std::rc::Rc;
+use std::cell::RefCell;
+use std::cell::RefMut;
+use std::collections::HashMap;
 
 /**
  * TurtleRef describes a reference to a turtle that is owned by
@@ -31,11 +34,14 @@ use std::rc::Rc;
 pub struct TurtleRef {
     // Figure out what type r should have.
     // r: ???
+    r: Rc<RefCell<Turtle>>
 }
 
 impl TurtleRef {
     pub fn borrowed_turtle(&self) -> BorrowedTurtle {
-        unimplemented!();
+        BorrowedTurtle {
+            r: self.r.borrow_mut()
+        }
     }
 
     // We suggest implementing a 'new' function.
@@ -46,41 +52,48 @@ impl TurtleRef {
 }
 
 // Hint: BorrowedTurtle might need a lifetime parameter.
-pub struct BorrowedTurtle {
+pub struct BorrowedTurtle <'a> {
     // Figure out what type r should have.
     // r:
+    r: RefMut<'a, Turtle>
+
 }
 
 // Hint: update this signature when you figure out the lifetime for BorrowedTurtle.
-impl<'a> std::ops::Deref for BorrowedTurtle {
+impl<'a> std::ops::Deref for BorrowedTurtle<'_> {
     type Target = Turtle;
 
     fn deref(&self) -> &Self::Target {
-        unimplemented!()
+        return &*self.r;
     }
 }
 
 // Hint: update this signature when you figure out the lifetime for BorrowedTurtle.
-impl<'a> std::ops::DerefMut for BorrowedTurtle {
+impl<'a> std::ops::DerefMut for BorrowedTurtle<'_> {
     fn deref_mut(&mut self) -> &mut Self::Target {
-        unimplemented!()
+        return & mut *self.r;
     }
 }
 
 pub struct Campus {
     // Fill in some fields here.
+    turtles: Vec<TurtleRef>,
+    cache: HashMap<String, Rc<RefCell<Vec<TurtleRef>>>>
 }
 
 impl Campus {
     pub fn new() -> Campus {
-        unimplemented!();
+        return Campus {
+            turtles: Vec::new(),
+            cache: HashMap::new()
+        };
     }
 
     /**
      * Returns the number of turtles present.
      */
     pub fn size(&self) -> usize {
-        unimplemented!();
+        return self.turtles.len();
     }
 
     /**
@@ -89,14 +102,36 @@ impl Campus {
      * After add_turtle returns, the Campus should hold the turtle in its collection of turtles. The new turtle should be at the END of the collection.
      */
     pub fn add_turtle(&mut self, turtle: Turtle) {
-        unimplemented!();
+        let new_turtle_ref = TurtleRef {
+            r: Rc::new(RefCell::new(turtle))
+        };
+        self.turtles.push(TurtleRef {
+            r: new_turtle_ref.r.clone()
+        });
+
+
+        match self.cache.get(new_turtle_ref.r.borrow().name()) {
+            None => {
+                let new_turtle_vec = Rc::new(RefCell::new(Vec::new()));
+                new_turtle_vec.borrow_mut().push(TurtleRef {
+                    r: new_turtle_ref.r.clone()
+                });
+                self.cache.insert(new_turtle_ref.r.borrow().name().clone(), new_turtle_vec);
+            },
+            Some (turtle_vec) => {
+                turtle_vec.borrow_mut().push(TurtleRef {
+                    r: new_turtle_ref.r.clone()
+                });}
+        };
     }
 
     /**
      * Gets a reference to a turtle at an index. Panics if index is out of bounds.
      */
     pub fn get_turtle(&self, index: usize) -> TurtleRef {
-        unimplemented!();
+        return TurtleRef {
+            r: self.turtles[index].r.clone()
+        };
     }
 
     /**
@@ -111,14 +146,42 @@ impl Campus {
      * parents' favorite colors.
      */
     pub fn breed_turtles(&mut self, t1_index: usize, t2_index: usize, child_name: String) {
-        unimplemented!();
+        let new_turtle = self.turtles[t1_index].r.borrow_mut().breed(&mut self.turtles[t2_index].r.borrow_mut(), child_name.clone());
+        let cloned_turtle = new_turtle.clone();
+        match self.cache.get(&child_name) {
+            None => {
+                let new_turtle_vec = Rc::new(RefCell::new(Vec::new()));
+                new_turtle_vec.borrow_mut().push(TurtleRef {
+                    r: cloned_turtle
+                });
+                self.cache.insert(child_name.clone(), new_turtle_vec);
+            },
+            Some (turtle_vec) => {
+                turtle_vec.borrow_mut().push(TurtleRef {
+                    r: cloned_turtle
+                });}
+        };
+        self.turtles.push(TurtleRef{
+            r: new_turtle
+        });
     }
 
     /**
      * Returns None if the campus is empty. Otherwise, returns Some of a reference to the turtle with the fastest walking speed.
      */
     pub fn fastest_walker(&self) -> Option<TurtleRef> {
-        unimplemented!();
+        if self.turtles.len() == 0 {
+            return None;
+        }
+        let mut fastest_turtle_index = 0;
+        for x in 1..self.turtles.len() {
+            if self.turtles[x].r.borrow().walking_speed() > self.turtles[fastest_turtle_index].r.borrow().walking_speed() {
+                fastest_turtle_index = x;
+            }
+        }
+        return Some(TurtleRef {
+            r: self.turtles[fastest_turtle_index].r.clone()
+        });
     }
 
     /**
@@ -126,10 +189,30 @@ impl Campus {
      * This interface will NOT work for "Fast Turtle Lookup".
      */
     pub fn turtles_with_name(&self, name: &str) -> Vec<TurtleRef> {
-        unimplemented!();
-    }
+        let mut matched_turtles = Vec::new();
+        for turtle in self.turtles.iter() {
+            if turtle.r.borrow().name() == name {
+                matched_turtles.push(TurtleRef {
+                    r: turtle.r.clone()
+                });
+            }
+        }
+        return matched_turtles;
+    }   
 
     pub fn turtles_with_name_cached(&self, name: &str) -> Rc<Vec<TurtleRef>> {
-        unimplemented!();
+        let mut turtle_name_vec = Vec::new();
+        match self.cache.get(name) {
+            None => return Rc::new(turtle_name_vec),
+            Some (turtle_vec_cell) => {
+                for turtle in turtle_vec_cell.borrow_mut().iter() {
+                    turtle_name_vec.push(TurtleRef {
+                        r: turtle.r.clone()
+                    });
+                }
+            }
+        }
+        
+        return Rc::new(turtle_name_vec);
     }
 }

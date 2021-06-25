@@ -1,0 +1,24 @@
+2021-04-12T16:35:38+00:00 DESKTOP-DNN0HAT#03 I: Start test public:2:public_mutop_simple_def_and_let.
+2021-04-12T16:35:38+00:00 DESKTOP-DNN0HAT#03 I: Test public:2:public_mutop_simple_def_and_let is successful.
+2021-04-12T16:35:38+00:00 DESKTOP-DNN0HAT#03 I: End test public:2:public_mutop_simple_def_and_let.
+2021-04-12T16:35:38+00:00 DESKTOP-DNN0HAT#03 I: Start test public:7:public_expr_let_fun.
+2021-04-12T16:35:38+00:00 DESKTOP-DNN0HAT#03 I: Test public:7:public_expr_let_fun is successful.
+2021-04-12T16:35:38+00:00 DESKTOP-DNN0HAT#03 I: End test public:7:public_expr_let_fun.
+2021-04-12T16:35:38+00:00 DESKTOP-DNN0HAT#03 I: Start test public:11:public_rec_function_factorial.
+2021-04-12T16:35:38+00:00 DESKTOP-DNN0HAT#03 I: Test public:11:public_rec_function_factorial is successful.
+2021-04-12T16:35:38+00:00 DESKTOP-DNN0HAT#03 I: End test public:11:public_rec_function_factorial.
+2021-04-12T16:35:38+00:00 DESKTOP-DNN0HAT#03 I: Start test public:14:public_expr_simple_div.
+2021-04-12T16:35:38+00:00 DESKTOP-DNN0HAT#03 I: Test public:14:public_expr_simple_div is successful.
+2021-04-12T16:35:38+00:00 DESKTOP-DNN0HAT#03 I: End test public:14:public_expr_simple_div.
+2021-04-12T16:35:38+00:00 DESKTOP-DNN0HAT#03 I: Start test public:18:public_expr_single_and.
+2021-04-12T16:35:38+00:00 DESKTOP-DNN0HAT#03 I: Test public:18:public_expr_single_and is successful.
+2021-04-12T16:35:38+00:00 DESKTOP-DNN0HAT#03 I: End test public:18:public_expr_single_and.
+2021-04-12T16:35:38+00:00 DESKTOP-DNN0HAT#03 I: Start test public:21:public_expr_single_if.
+2021-04-12T16:35:38+00:00 DESKTOP-DNN0HAT#03 I: Test public:21:public_expr_single_if is successful.
+2021-04-12T16:35:38+00:00 DESKTOP-DNN0HAT#03 I: End test public:21:public_expr_single_if.
+2021-04-12T16:35:38+00:00 DESKTOP-DNN0HAT#03 I: Start test public:26:public_expr_single_or.
+2021-04-12T16:35:38+00:00 DESKTOP-DNN0HAT#03 I: Test public:26:public_expr_single_or is successful.
+2021-04-12T16:35:38+00:00 DESKTOP-DNN0HAT#03 I: End test public:26:public_expr_single_or.
+2021-04-12T16:35:38+00:00 DESKTOP-DNN0HAT#03 I: Start test public:28:public_err_def_not_top_level.
+2021-04-12T16:35:38+00:00 DESKTOP-DNN0HAT#03 I: Test public:28:public_err_def_not_top_level is successful.
+2021-04-12T16:35:38+00:00 DESKTOP-DNN0HAT#03 I: End test public:28:public_err_def_not_top_level.

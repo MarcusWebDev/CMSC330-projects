@@ -32,10 +32,30 @@ fn new_image() -> RgbImage {
  * 
  */
 pub fn make_mandelbrot_image() -> RgbImage {
-    let image = new_image();
+    let mut image = new_image();
     let (_width, _height) = image.dimensions();
 
     // Hint: make `image` mut and then modify it.
+    for i in 0.._width {
+        for j in 0.._height {
+            let x0 = (i as f64) / (_width as f64) * (1.0 + 2.5) - 2.5;
+            let y0 = (j as f64) / (_height as f64) * (1.0 + 1.0) - 1.0;
+            let mut x = 0.0;
+            let mut y = 0.0;
+            let mut iteration = 0;
+            let max_iteration = 1000;
 
-    image
+            while x*x + y*y <= 2.0 * 2.0 && iteration < max_iteration {
+                let xtemp = x*x - y*y + x0;
+                y = 2.0 * x * y + y0;
+                x = xtemp;
+                iteration += 1;
+            }
+            let color = ((iteration as f64) / 1000.0 * 255.0) as u8;
+            let pixel = image::Rgb([color, color, color]);
+            image.put_pixel(i, j, pixel);
+        }
+    }
+
+    return image;
 }

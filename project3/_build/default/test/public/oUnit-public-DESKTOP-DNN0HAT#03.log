@@ -1,0 +1,6 @@
+2021-03-30T20:39:32+00:00 DESKTOP-DNN0HAT#03 I: Start test public:2:nfa_move.
+2021-03-30T20:39:32+00:00 DESKTOP-DNN0HAT#03 I: Test public:2:nfa_move is successful.
+2021-03-30T20:39:32+00:00 DESKTOP-DNN0HAT#03 I: End test public:2:nfa_move.
+2021-03-30T20:39:32+00:00 DESKTOP-DNN0HAT#03 I: Start test public:6:nfa_new_states.
+2021-03-30T20:39:32+00:00 DESKTOP-DNN0HAT#03 I: Test public:6:nfa_new_states is successful.
+2021-03-30T20:39:32+00:00 DESKTOP-DNN0HAT#03 I: End test public:6:nfa_new_states.

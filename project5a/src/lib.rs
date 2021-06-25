@@ -6,14 +6,19 @@ pub mod points;
     If n is less than 0, return -1
 **/
 pub fn gauss(n: i32) -> i32 {
-    unimplemented!()
+    if n < 0 {
+        return -1;
+    } else if n == 0 {
+        return 0;
+    }
+    return n + gauss(n - 1)
 }
 
 /**
  * Adds one to the referenced integer.
  */
 pub fn add_one(n: &mut i32) {
-    unimplemented!()
+    *n = *n + 1;
 }
 
 /**
@@ -21,7 +26,12 @@ pub fn add_one(n: &mut i32) {
  * See https://doc.rust-lang.org/std/string/struct.String.html.
  */
 pub fn rewrite_string(s: &mut String) {
-    unimplemented!()
+    let length = s.len();
+    *s = String::from("");
+    for x in 0..length {
+        s.push_str("a")
+    }
+    println!("{}", s);
 }
 
 /**
@@ -33,7 +43,15 @@ pub fn rewrite_string(s: &mut String) {
     Ex: to_decimal of [true, false, true, false] returns 10
 **/
 pub fn to_decimal(ls: [bool; 32]) -> u32 {
-    unimplemented!()
+    let length = ls.len();
+    let mut sum = 0;
+    for x in 0..length {
+        if ls[x] {
+            let new_value = 2_u32.pow((length - x - 1) as u32);
+            sum += new_value;
+        }
+    }
+    return sum;
 }
 
 /**
@@ -49,14 +67,25 @@ pub fn to_decimal(ls: [bool; 32]) -> u32 {
  * Therefore, collatz(4) = 2.
 */
 pub fn collatz(mut n: u64) -> u64 {
-    unimplemented!()
+    if n == 1 {
+        return 0;
+    }
+    if n % 2 == 0 {
+        return 1 + collatz(n/2)
+    } else {
+        return 1 + collatz( 3 * n + 1)
+    }
 }
 
 /**
  * Returns a vector containing collatz(1), collatz(2), ..., collatz(n).
  */
 pub fn collatz_times(n: u64) -> Vec<u64> {
-    unimplemented!()
+    let mut v = Vec::new();
+    for x in 0..n {
+        v.push(collatz(x + 1));
+    }
+    return v;
 }
 
 /** 
@@ -67,12 +96,20 @@ pub fn collatz_times(n: u64) -> Vec<u64> {
     EX: rotate [1,2,3,4] returns [2,3,4,1]
 **/
 pub fn rotate(lst: &[i32]) -> Vec<i32> {
-    unimplemented!()
+    let length = lst.len();
+    let mut v = Vec::new();
+    for x in 0..length {
+        v.push(lst[(x + 1) % (length)])
+    }
+    return v;
 }
 
 /**
  * Returns a new string whose contents is the concatenation of the two input slices.
  */
 pub fn concatenate_strings(s1: &str, s2: &str) -> String {
-    unimplemented!()
+    let mut new_string = String::from("");
+    new_string.push_str(s1);
+    new_string.push_str(s2);
+    return new_string;
 }

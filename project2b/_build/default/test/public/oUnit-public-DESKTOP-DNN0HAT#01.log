@@ -1,0 +1,9 @@
+2021-03-09T16:26:58+00:00 DESKTOP-DNN0HAT#01 I: Start test public:0:is_elem.
+2021-03-09T16:26:58+00:00 DESKTOP-DNN0HAT#01 I: Test public:0:is_elem is successful.
+2021-03-09T16:26:58+00:00 DESKTOP-DNN0HAT#01 I: End test public:0:is_elem.
+2021-03-09T16:26:58+00:00 DESKTOP-DNN0HAT#01 I: Start test public:4:assoc_list.
+2021-03-09T16:26:58+00:00 DESKTOP-DNN0HAT#01 I: Test public:4:assoc_list is successful.
+2021-03-09T16:26:58+00:00 DESKTOP-DNN0HAT#01 I: End test public:4:assoc_list.
+2021-03-09T16:26:58+00:00 DESKTOP-DNN0HAT#01 I: Start test public:9:tree_map_put_and_get.
+2021-03-09T16:26:58+00:00 DESKTOP-DNN0HAT#01 I: Test public:9:tree_map_put_and_get is successful.
+2021-03-09T16:26:58+00:00 DESKTOP-DNN0HAT#01 I: End test public:9:tree_map_put_and_get.

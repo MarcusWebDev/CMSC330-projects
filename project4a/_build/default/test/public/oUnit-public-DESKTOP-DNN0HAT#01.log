@@ -1,0 +1,24 @@
+2021-04-12T16:35:38+00:00 DESKTOP-DNN0HAT#01 I: Start test public:0:public_nothing.
+2021-04-12T16:35:38+00:00 DESKTOP-DNN0HAT#01 I: Test public:0:public_nothing is successful.
+2021-04-12T16:35:38+00:00 DESKTOP-DNN0HAT#01 I: End test public:0:public_nothing.
+2021-04-12T16:35:38+00:00 DESKTOP-DNN0HAT#01 I: Start test public:4:public_expr_apply.
+2021-04-12T16:35:38+00:00 DESKTOP-DNN0HAT#01 I: Test public:4:public_expr_apply is successful.
+2021-04-12T16:35:38+00:00 DESKTOP-DNN0HAT#01 I: End test public:4:public_expr_apply.
+2021-04-12T16:35:38+00:00 DESKTOP-DNN0HAT#01 I: Start test public:6:public_expr_let_if.
+2021-04-12T16:35:38+00:00 DESKTOP-DNN0HAT#01 I: Test public:6:public_expr_let_if is successful.
+2021-04-12T16:35:38+00:00 DESKTOP-DNN0HAT#01 I: End test public:6:public_expr_let_if.
+2021-04-12T16:35:38+00:00 DESKTOP-DNN0HAT#01 I: Start test public:10:public_expr_sub1.
+2021-04-12T16:35:38+00:00 DESKTOP-DNN0HAT#01 I: Test public:10:public_expr_sub1 is successful.
+2021-04-12T16:35:38+00:00 DESKTOP-DNN0HAT#01 I: End test public:10:public_expr_sub1.
+2021-04-12T16:35:38+00:00 DESKTOP-DNN0HAT#01 I: Start test public:15:public_expr_simple_mult.
+2021-04-12T16:35:38+00:00 DESKTOP-DNN0HAT#01 I: Test public:15:public_expr_simple_mult is successful.
+2021-04-12T16:35:38+00:00 DESKTOP-DNN0HAT#01 I: End test public:15:public_expr_simple_mult.
+2021-04-12T16:35:38+00:00 DESKTOP-DNN0HAT#01 I: Start test public:19:public_expr_single_bool.
+2021-04-12T16:35:38+00:00 DESKTOP-DNN0HAT#01 I: Test public:19:public_expr_single_bool is successful.
+2021-04-12T16:35:38+00:00 DESKTOP-DNN0HAT#01 I: End test public:19:public_expr_single_bool.
+2021-04-12T16:35:38+00:00 DESKTOP-DNN0HAT#01 I: Start test public:23:public_expr_single_notequal.
+2021-04-12T16:35:38+00:00 DESKTOP-DNN0HAT#01 I: Test public:23:public_expr_single_notequal is successful.
+2021-04-12T16:35:38+00:00 DESKTOP-DNN0HAT#01 I: End test public:23:public_expr_single_notequal.
+2021-04-12T16:35:38+00:00 DESKTOP-DNN0HAT#01 I: Start test public:27:public_expr_single_string.
+2021-04-12T16:35:38+00:00 DESKTOP-DNN0HAT#01 I: Test public:27:public_expr_single_string is successful.
+2021-04-12T16:35:38+00:00 DESKTOP-DNN0HAT#01 I: End test public:27:public_expr_single_string.

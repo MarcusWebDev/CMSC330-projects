@@ -5,19 +5,21 @@ use crate::turtle::Turtle;
 pub type TurtleRef<'a> = &'a Turtle;
 
 pub struct Campus {
-    // Fill in some fields here.
+    turtles: Vec<Turtle>
 }
 
 impl Campus {
     pub fn new() -> Campus {
-        unimplemented!();
+        return Campus {
+            turtles: Vec::new()
+        };
     }
 
     /**
      * Returns the number of turtles present.
      */
     pub fn size(&self) -> usize {
-        unimplemented!();
+        return self.turtles.len();
     }
 
     /**
@@ -26,21 +28,21 @@ impl Campus {
      * After add_turtle returns, the Campus should hold the turtle in its collection of turtles. The new turtle should be at the END of the collection.
      */
     pub fn add_turtle(&mut self, turtle: Turtle) {
-        unimplemented!();
+        self.turtles.push(turtle);
     }
 
     /**
      * Gets a reference to a turtle at an index. Panics if index is out of bounds.
      */
     pub fn get_turtle(&self, index: usize) -> TurtleRef {
-        unimplemented!();
+        return &self.turtles[index];
     }
 
     /**
      * Returns a fresh iterator
      */
     pub fn turtles(&self) -> std::slice::Iter<Turtle> {
-        unimplemented!();
+        return self.turtles.iter();
     }
 
     /**
@@ -55,14 +57,24 @@ impl Campus {
      * parents' favorite colors.
      */
     pub fn breed_turtles(&mut self, t1_index: usize, t2_index: usize, child_name: String) {
-        unimplemented!();
+        let new_turtle = self.turtles[t1_index].breed(&self.turtles[t2_index], child_name);
+        self.add_turtle(new_turtle);
     }
 
     /**
      * Returns None if the campus is empty. Otherwise, returns Some of a reference to the turtle with the fastest walking speed.
      */
     pub fn fastest_walker(&self) -> Option<&Turtle> {
-        unimplemented!();
+        if self.turtles.len() == 0 {
+            return None;
+        }
+        let mut fastest_turtle_index = 0;
+        for x in 1..self.turtles.len() {
+            if self.turtles[x].walking_speed() > self.turtles[fastest_turtle_index].walking_speed() {
+                fastest_turtle_index = x;
+            }
+        }
+        return Some(&self.turtles[fastest_turtle_index]);
     }
 
     /**
@@ -70,6 +82,12 @@ impl Campus {
      * This interface will NOT work for "Fast Turtle Lookup".
      */
     pub fn turtles_with_name(&self, name: &str) -> Vec<TurtleRef> {
-        unimplemented!();
+        let mut matched_turtles = Vec::new();
+        for turtle in self.turtles.iter() {
+            if turtle.name() == name {
+                matched_turtles.push(turtle);
+            }
+        }
+        return matched_turtles;
     }
 }

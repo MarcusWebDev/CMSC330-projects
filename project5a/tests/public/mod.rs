@@ -99,7 +99,7 @@ fn public_test_decimal() {
 fn public_test_mandelbrot() {
     let image = make_mandelbrot_image();
     // Uncomment to save the image to a file so you can see your output.
-    //image.save("mandelbrot.png").unwrap();
+    image.save("mandelbrot.png").unwrap();
  
     let solution = image::open("tests/public/mandelbrot_solution.png").unwrap().to_rgb8();
     for x in 0..512 {

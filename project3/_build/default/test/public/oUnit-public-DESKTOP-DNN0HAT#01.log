@@ -1,0 +1,9 @@
+2021-03-30T20:39:32+00:00 DESKTOP-DNN0HAT#01 I: Start test public:0:nfa_accept.
+2021-03-30T20:39:32+00:00 DESKTOP-DNN0HAT#01 I: Test public:0:nfa_accept is successful.
+2021-03-30T20:39:32+00:00 DESKTOP-DNN0HAT#01 I: End test public:0:nfa_accept.
+2021-03-30T20:39:32+00:00 DESKTOP-DNN0HAT#01 I: Start test public:4:re_to_nfa.
+2021-03-30T20:39:32+00:00 DESKTOP-DNN0HAT#01 I: Test public:4:re_to_nfa is successful.
+2021-03-30T20:39:32+00:00 DESKTOP-DNN0HAT#01 I: End test public:4:re_to_nfa.
+2021-03-30T20:39:32+00:00 DESKTOP-DNN0HAT#01 I: Start test public:7:nfa_new_trans.
+2021-03-30T20:39:32+00:00 DESKTOP-DNN0HAT#01 I: Test public:7:nfa_new_trans is successful.
+2021-03-30T20:39:32+00:00 DESKTOP-DNN0HAT#01 I: End test public:7:nfa_new_trans.

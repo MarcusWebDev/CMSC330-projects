@@ -8,7 +8,15 @@ type Point = (f64, f64);
  * If the two points have equal x positions, it should return p1.
  */
 pub fn rightmost_point(p1: Point, p2: Point) -> Point {
-    unimplemented!()
+    let (p1x, p1y) = p1;
+    let (p2x, p2y) = p2;
+    if p1x > p2x {
+        return p1;
+    } else if p1x < p2x {
+        return p2
+    } else {
+        return p1;
+    }
 }
 
 /**
@@ -16,5 +24,5 @@ pub fn rightmost_point(p1: Point, p2: Point) -> Point {
  * 
  */
 pub fn duplicate_point(p: Point) -> (Point, Point) {
-    unimplemented!()
+    return (p, p);
 }

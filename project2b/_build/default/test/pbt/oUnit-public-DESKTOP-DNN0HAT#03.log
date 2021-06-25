@@ -1,0 +1,12 @@
+2021-03-09T16:26:58+00:00 DESKTOP-DNN0HAT#03 I: Start test public:2:test_count_occ_target_in_lst.
+2021-03-09T16:26:58+00:00 DESKTOP-DNN0HAT#03 I: 
+2021-03-09T16:26:58+00:00 DESKTOP-DNN0HAT#03 I: law test_count_occ_target_in_lst: 1000 relevant cases (1000 total)
+2021-03-09T16:26:58+00:00 DESKTOP-DNN0HAT#03 I: 
+2021-03-09T16:26:58+00:00 DESKTOP-DNN0HAT#03 I: Test public:2:test_count_occ_target_in_lst is successful.
+2021-03-09T16:26:58+00:00 DESKTOP-DNN0HAT#03 I: End test public:2:test_count_occ_target_in_lst.
+2021-03-09T16:26:58+00:00 DESKTOP-DNN0HAT#03 I: Start test public:5:test_uniq_reversed_same.
+2021-03-09T16:26:59+00:00 DESKTOP-DNN0HAT#03 I: 
+2021-03-09T16:26:59+00:00 DESKTOP-DNN0HAT#03 I: law test_uniq_reversed_same: 1000 relevant cases (1000 total)
+2021-03-09T16:26:59+00:00 DESKTOP-DNN0HAT#03 I: 
+2021-03-09T16:26:59+00:00 DESKTOP-DNN0HAT#03 I: Test public:5:test_uniq_reversed_same is successful.
+2021-03-09T16:26:59+00:00 DESKTOP-DNN0HAT#03 I: End test public:5:test_uniq_reversed_same.

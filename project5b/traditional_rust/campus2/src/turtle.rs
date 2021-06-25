@@ -1,6 +1,8 @@
 use crate::cookbook::{Cookbook, Recipe};
 use crate::genetics::*;
 use crate::magic::{TurtlePower, World};
+use std::cell::RefCell;
+use std::rc::Rc;
 
 #[derive(Debug)]
 pub struct Turtle {
@@ -8,6 +10,8 @@ pub struct Turtle {
     walking_speed: u32,
     favorite_color: Color,
     favorite_flavor: Flavor,
+    magical_item: Option<Rc<RefCell<Box<dyn TurtlePower>>>>,
+    child_vec: Vec<Rc<RefCell<Turtle>>>
 }
 
 pub struct NoMagicalItemError;
@@ -17,23 +21,39 @@ impl Turtle {
      * Returns an appropriately-initialized Turtle.
      */
     pub fn new(name: String, walking_speed: u32, favorite_color: Color, favorite_flavor: Flavor) -> Turtle {
-        unimplemented!();
+        let new_turtle = Turtle {
+            name: name,
+            walking_speed: walking_speed,
+            favorite_color: favorite_color,
+            favorite_flavor: favorite_flavor,
+            magical_item: None,
+            child_vec: Vec::new()
+        };
+        return new_turtle;
     }
 
     pub fn walking_speed(&self) -> u32 {
-        unimplemented!();
+        return self.walking_speed;
     }
 
     pub fn favorite_flavor(&self) -> Flavor {
-        unimplemented!();
+        return self.favorite_flavor;
     }
 
     pub fn name(&self) -> &String {
-        unimplemented!();
+        return &self.name;
     }
 
     pub fn favorite_color(&self) -> &Color {
-        unimplemented!();
+        return &self.favorite_color;
+    }
+
+    pub fn breed(&mut self, partner: &mut Turtle, child_name: String) -> Rc<RefCell<Turtle>> {
+        let new_turtle = Turtle::new(child_name, 1, Color::cross(self.favorite_color(), partner.favorite_color()), Flavor::random_flavor());
+        let new_turtle_ref = Rc::new(RefCell::new(new_turtle));
+        self.child_vec.push(new_turtle_ref.clone());
+        partner.child_vec.push(new_turtle_ref.clone());
+        return new_turtle_ref;
     }
 
     /**
@@ -44,8 +64,13 @@ impl Turtle {
      * up to you to figure out which ones and where. Do not make any other changes
      * to the signature.
      */
-    pub fn choose_recipe(&self, cookbook: &Cookbook) -> Option<&Recipe> {
-        unimplemented!();
+    pub fn choose_recipe<'a>(&self, cookbook: & 'a Cookbook) -> Option<& 'a Recipe> {
+        for recipe in cookbook.recipes() {
+            if recipe.flavor() == self.favorite_flavor() {
+                return Some(&recipe);
+            }
+        }
+        return None;
     }
 
     /**
@@ -53,7 +78,7 @@ impl Turtle {
      * If there is already a magical item, the new item should be saved (the old item can be discarded).
      */
     pub fn take_magical_item(&mut self, item: Box<dyn TurtlePower>) {
-        unimplemented!();
+        self.magical_item = Some(Rc::new(RefCell::new(item)))
     }
 
     /**
@@ -61,14 +86,18 @@ impl Turtle {
      * Otherwise, it should return the appropriate error.
      */
     pub fn activate_magical_item(&mut self, world: &mut World) -> Result<(), NoMagicalItemError> {
-        unimplemented!();
+        match &self.magical_item {
+            None => return Err(NoMagicalItemError),
+            Some(item) => item.clone().borrow_mut().activate(world) 
+        }
+        return Ok(());
     }
 
     /**
      * Returns the number of children that this turtle has.
      */
     pub fn num_children(&self) -> usize {
-        unimplemented!();
+        return self.child_vec.len()
     }
 
     /**
@@ -76,6 +105,8 @@ impl Turtle {
      * (You think walking is easy? Try doing it while carrying your house on your back!)
      */
     pub fn teach_children(&mut self) {
-        unimplemented!();
+        for turtle in self.child_vec.iter() {
+            turtle.borrow_mut().walking_speed += 1;
+        }
     }
 }

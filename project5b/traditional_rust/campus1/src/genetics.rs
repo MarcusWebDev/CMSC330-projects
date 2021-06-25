@@ -72,6 +72,12 @@ impl Color {
      * Returns a new Color whose components have been computed by calling cross8 on the components of c1 and c2.
      */
     pub fn cross(c1: &Color, c2: &Color) -> Color {
-        unimplemented!();
+        let new_color = Color {
+            r: cross8(c1.r, c2.r),
+            g: cross8(c1.g, c2.g),
+            b: cross8(c1.b, c2.b)
+        };
+        return new_color;
     }
 }
+
